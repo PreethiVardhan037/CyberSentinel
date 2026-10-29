@@ -1,0 +1,99 @@
+# =============================================================================
+# CyberSentinel .gitignore
+# =============================================================================
+
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+.Python
+*.egg-info/
+dist/
+build/
+*.egg
+*.whl
+.eggs/
+
+# Virtual environments
+.venv/
+venv/
+env/
+ENV/
+
+# Pytest
+.pytest_cache/
+.cache/
+htmlcov/
+.coverage
+coverage.xml
+
+# MyPy / type-checking
+.mypy_cache/
+.dmypy.json
+
+# Jupyter
+.ipynb_checkpoints/
+
+# =============================================================================
+# ML Artifacts (generated — not committed)
+# =============================================================================
+ml/artifacts/pipeline.joblib
+ml/artifacts/feature_names.json
+ml/artifacts/eval_report.json
+ml/artifacts/mode.json
+ml/artifacts/eval_report_real.json
+
+# =============================================================================
+# Large / external datasets (NEVER commit CIC-IDS2017 or similar)
+# =============================================================================
+data/raw/
+data/*.csv
+*.pcap
+*.pcapng
+
+# But DO include the demo CSV if it is small and clearly synthetic
+# (it is generated deterministically and is small enough to include)
+# data/sample/demo_data.csv — included in Git
+
+# =============================================================================
+# Node / frontend
+# =============================================================================
+node_modules/
+frontend/node_modules/
+frontend/dist/
+frontend/.vite/
+*.local
+.DS_Store
+
+# =============================================================================
+# Environment / secrets
+# =============================================================================
+.env
+.env.local
+.env.*.local
+*.pem
+*.key
+*.secret
+
+# =============================================================================
+# Editor / IDE
+# =============================================================================
+.idea/
+.vscode/settings.json
+*.swp
+*.swo
+*~
+.DS_Store
+Thumbs.db
+
+# =============================================================================
+# OS
+# =============================================================================
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db

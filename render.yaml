@@ -1,0 +1,24 @@
+# Render deployment configuration for the CyberSentinel FastAPI backend.
+# See: https://render.com/docs/render-yaml
+#
+# Usage: Connect your GitHub repo to Render and this file is picked up
+# automatically, OR use the Render dashboard with the settings below.
+
+services:
+  - type: web
+    name: cybersentinel-api
+    runtime: python
+    buildCommand: |
+      pip install -r backend/requirements.txt &&
+      python ml/generate_sample_data.py --output data/sample/demo_data.csv &&
+      python ml/train.py --mode demo
+    startCommand: uvicorn backend.app.main:app --host 0.0.0.0 --port $PORT
+    plan: free
+    envVars:
+      - key: CYBERSENTINEL_ALLOWED_ORIGINS
+        # Replace with your actual Vercel frontend URL after deploying.
+        value: https://cybersentinel.vercel.app
+      - key: PYTHON_VERSION
+        value: "3.11"
+    healthCheckPath: /health
+    autoDeploy: true
